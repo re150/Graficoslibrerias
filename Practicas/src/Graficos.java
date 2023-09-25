@@ -9,32 +9,23 @@ import java.util.List;
 public class Graficos extends JFrame {
     private BufferedImage buffer;
     private Graphics pixel;
-    private int x;
-    private int y;
-    private Color c = Color.BLACK;
+    private Color c = Color.red;
 
     public Graficos() {
-
         this.setResizable(false);
         this.setVisible(true);
         this.setSize(500, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         buffer = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
         pixel = (Graphics2D) buffer.createGraphics();
-
-
     }
 
     public void putPixel(int x, int y) {
-
         buffer.setRGB(0, 0, c.getRGB());
         this.getGraphics().drawImage(buffer, x, y, this);
-
-
     }
 
-    public void drawLineaImperfecta(int x0, int y0, int x1, int y1) {
+    public void lineaFormulaYm(int x0, int y0, int x1, int y1) {
 
         c = Color.blue;
         float m = (float) (y1 - y0) / (x1 - x0);
@@ -51,7 +42,7 @@ public class Graficos extends JFrame {
 
     }
 
-    public void drawLineaMejorada(int x0, int y0, int x1, int y1) {
+    public void lineaMejorada(int x0, int y0, int x1, int y1) {
 
         c = Color.black;
 
@@ -107,7 +98,7 @@ public class Graficos extends JFrame {
     }
 
 
-    public void drawLineaDDA(int x0, int y0, int x1, int y1) {
+    public void LineaDDA(int x0, int y0, int x1, int y1) {
 
         c = Color.BLACK;
         float dx = x1 - x0;
@@ -139,7 +130,7 @@ public class Graficos extends JFrame {
 
     }
 
-    public void drawLineaBresenham(int x0, int y0, int x1, int y1) {
+    public void lineaBresenham(int x0, int y0, int x1, int y1) {
 
         c = Color.CYAN;
         int dx = Math.abs(x1 - x0);
@@ -223,19 +214,19 @@ public class Graficos extends JFrame {
         try {
             futures = executor.invokeAll(List.of(
                     () -> {
-                        drawLineaDDA(x0, y0, x0, y1);
+                        LineaDDA(x0, y0, x0, y1);
                         return null;
                     },
                     () -> {
-                        drawLineaDDA(x1, y0, x1, y1);
+                        LineaDDA(x1, y0, x1, y1);
                         return null;
                     },
                     () -> {
-                        drawLineaDDA(x0, y1, x1, y1);
+                        LineaDDA(x0, y1, x1, y1);
                         return null;
                     },
                     () -> {
-                        drawLineaDDA(x0, y0, x1, y0);
+                        LineaDDA(x0, y0, x1, y0);
                         return null;
                     }
             ));
