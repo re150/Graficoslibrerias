@@ -29,7 +29,7 @@ public class Pixel  extends JFrame {
     }
 
     //Practica 1
-    public void algortmolineaYm(int x0, int y0, int x1, int y1, Color c) {
+    public void AlgoritmolineaYm(int x0, int y0, int x1, int y1, Color c) {
 
         float m =  (float) (y1 - y0) / (x1 - x0);
         float b = y0 - m * x0;
@@ -43,7 +43,7 @@ public class Pixel  extends JFrame {
     }
 
     //Practica 2
-    public void lineaMejorada(int x0, int y0, int x1, int y1, Color c) {
+    public void AlgoritmoLineaMejorada(int x0, int y0, int x1, int y1, Color c) {
         //formual de la pendiente
         float m = ((float) x0 == (float)x1) ? 0 : ((float)y1 - (float)y0 ) / ((float)x1 - (float) x0 ); // Manejar líneas verticales
         float b = (float)y0 - m * x0;
@@ -90,8 +90,6 @@ public class Pixel  extends JFrame {
             y = y + yinc;
             putPixel(Math.round(x), Math.round(y),c);
         }
-
-
     }
 
     //Practica 4
@@ -184,7 +182,6 @@ public class Pixel  extends JFrame {
 
         }
 
-
     }
 
     //Practica 8
@@ -203,7 +200,7 @@ public class Pixel  extends JFrame {
     }
 
     //Practica9
-    public  void  drawCircleSymmetry8(int xc, int yc, int r,Color c) {
+    public  void AlgoritmoCirculoSimetrico8(int xc, int yc, int r, Color c) {
         int x = r;
         int y = 0;
         int radiusError = 1 - x;
@@ -229,7 +226,7 @@ public class Pixel  extends JFrame {
         }
     }
     //Practica10
-    public void AlgortmoPuntoMedioCirculo(int xc, int yc , int r, Color c) {
+    public void AlgoritmoPuntoMedioCirculo(int xc, int yc , int r, Color c) {
         int x = r;
         int y = 0;
         int radiusError = 1 - x;
@@ -258,7 +255,7 @@ public class Pixel  extends JFrame {
     }
 
     //Practica11
-    public  void ModeloBresenhamCirculo (int xc, int yc , int r, Color c) {
+    public  void AlgoritmoCirculoBresenham(int xc, int yc , int r, Color c) {
         int x = r;
         int y = 0;
         int error = 0;
@@ -286,7 +283,7 @@ public class Pixel  extends JFrame {
 
     //Practica12
     // es la formula para el perimetro de un elipse
-    public void drawElipse(int x1, int y1, int r1, int r2,  Color c) {
+    public void AlgoritmoElipse(int x1, int y1, int r1, int r2, Color c) {
         int  resolu  = 1000 ;
         int x = 0, y = 0;
         double angulo = 2 * Math.PI/resolu, a= 0;
