@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import static java.lang.Thread.sleep;
+
 public class Pixel  extends JFrame {
     private BufferedImage buffer;
     private Graphics graPixel;
@@ -19,8 +21,22 @@ public class Pixel  extends JFrame {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
-        putPixel(80, 80, Color.BLACK);
+        try {
+            super.paint(graPixel);
+        }catch (Exception e){
+            System.err.println();
+        }
+     //   putPixel(80, 80, Color.BLACK);
+    }
+
+    public void clear (){
+       try {
+           sleep(1000);
+           super.paint(this.getGraphics());
+           // Redibujar el buffer en blanco (color de fondo)
+           buffer.setRGB(0, 0, Color.WHITE.getRGB());
+           this.getGraphics().drawImage(buffer, 0, 0, this);
+       }catch (Exception e){}
     }
 
     public void putPixel(int x, int y,Color c) {
@@ -39,7 +55,6 @@ public class Pixel  extends JFrame {
             y = m * i + b;
             putPixel(Math.round(i), Math.round(y),c);
         }
-
     }
 
     //Practica 2
@@ -162,10 +177,9 @@ public class Pixel  extends JFrame {
         int y1 = y + a;
 
         AlgoritmoDDALine(x0, y0, x0, y1, c);
-        AlgoritmoDDALine(x1, y0, x1, y1,c);
+        AlgoritmoDDALine(x1, y0, x1, y1, c);
         AlgoritmoDDALine(x0, y1, x1, y1, c);
         AlgoritmoDDALine(x0, y0, x1, y0, c);
-
     }
 
     //Practica 7
@@ -281,7 +295,7 @@ public class Pixel  extends JFrame {
         }
     }
 
-    //Practica12
+    //Practica 12
     // es la formula para el perimetro de un elipse
     public void AlgoritmoElipse(int x1, int y1, int r1, int r2, Color c) {
         int  resolu  = 1000 ;
