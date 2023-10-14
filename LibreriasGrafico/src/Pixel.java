@@ -59,23 +59,26 @@ public class Pixel  extends JFrame {
 
     //Practica 2
     public void AlgoritmoLineaMejorada(int x0, int y0, int x1, int y1, Color c) {
-        //formual de la pendiente
-        float m = ((float) x0 == (float)x1) ? 0 : ((float)y1 - (float)y0 ) / ((float)x1 - (float) x0 ); // Manejar líneas verticales
-        float b = (float)y0 - m * x0;
-        float y;
-
-        int startX = Math.round(x0);
-        int endX = Math.round(x1);
-
-        for (int i = startX; i <= endX; i++) {
-            if (x0 == x1) {
-                y = Math.min(y0, y1) + (i - startX); // Manejar líneas verticales
-            } else {
-                y = m * i + b;
+        if (x0 == x1) {
+            // Caso especial: la línea es vertical
+            int startY = Math.min(y0, y1);
+            int endY = Math.max(y0, y1);
+            for (int y = startY; y <= endY; y++) {
+                putPixel(x0, y, c);
             }
-            putPixel(i, Math.round(y), c);
-        }
+        } else {
+            float m = (float) (y1 - y0) / (x1 - x0); // calcula la pendiente de la línea
+            float b = y0 - m * x0; // calcula la intersección con el eje y
+            float y;
 
+            int startX = Math.min(x0, x1);
+            int endX = Math.max(x0, x1);
+
+            for (int i = startX; i <= endX; i++) {
+                y = m * i + b;
+                putPixel(Math.round(i), Math.round(y), c);
+            }
+        }
     }
 
     //Practica 3
@@ -119,6 +122,7 @@ public class Pixel  extends JFrame {
 
         while (x0 != x1 || y0 != y1) {
             putPixel(x0, y0, c);
+            System.out.println("x0 = " + x0 +" "+ y0);
               erro2 = 2 * errO;
 
             if (erro2 > -dy) {
@@ -311,5 +315,69 @@ public class Pixel  extends JFrame {
         }
 
     }
+
+    //Practica 13
+    public void AlgoritmoTiposDeLinea (int x0, int y0, int x1, int y1,int sizeMask, Color c) {
+        boolean estado = true;
+        float dx = Math.abs(x1 - x0);
+        float dy = Math.abs(y1 - y0);
+        float sx = (x0 < x1) ? 1 : -1;
+        float sy = (y0 < y1) ? 1 : -1;
+        float errO = dx - dy;
+        float erro2;
+        int  paintS = 0;
+        int con = 0;
+        int  unpaint = sizeMask;
+
+        while (x0 != x1 || y0 != y1) {
+                //los pixel que si se pintan
+            System.out.println("paintS = " + paintS);
+
+         if(paintS  <  unpaint && estado ) {
+             putPixel(x0, y0, c);
+             paintS++;
+         }else {
+             estado =false;
+             paintS--;
+             con++;
+             if(con >= unpaint) {
+                estado = true;
+                con =0;
+             }
+         }
+            System.out.println("estado = " + estado);
+               System.out.println("x0 = " + x0 + " y0 " + y0);
+               erro2 = 2 * errO;
+
+               if (erro2 > -dy) {
+                   errO -= dy;
+                   x0 += sx;
+               //    System.out.println("sx = " + sx);
+               }
+
+               if (erro2 < dx) {
+                   errO += dx;
+                   y0 += sy;
+                 //  System.out.println("sy = " + sy);
+               }
+
+        }
+
+    }
+    //Practica 14
+
+    //Pracica 15
+
+    //Practica 16
+
+    //Practica 17
+
+    //Practica 18
+
+    //Practica 19
+
+    //Practica 20
+
+    //Practica 21
 
 }

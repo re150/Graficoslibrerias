@@ -18,19 +18,20 @@ public class Main {
     //   g.ModeloBresenhamCirculo(200,200,50,Color.black);
         g.drawCircleSymmetry8(250,250,200,Color.black);
         g.drawCircleSymmetry8(250,250,100,Color.black);*/
+
         try {
 
-            //Practica 1
-            g.AlgoritmolineaYm(50,400,400,50,Color.red );
+           //Practica 1
+          /*  g.AlgoritmolineaYm(50,400,400,50,Color.red );
             g.clear();
             //Practica 2
-            g.AlgoritmoLineaMejorada(100,250,250,100,Color.black);
-            g.clear();
+            g.AlgoritmoLineaMejorada(100,100,150,100,Color.black);
+            /*g.clear();
             //Practica 3
             g.AlgoritmoDDALine(50,300,300,50,Color.CYAN);
             g.clear();
             //Practica 4
-            g.AlgoritmoBresenhamLine(50,300,300,50,Color.black);
+            g.AlgoritmoBresenhamLine(150,300,150,50,Color.black);
             g.clear();
             //Practica 5
             g.AlgoritmoMPLinea(50,300,300,50,Color.black);
@@ -79,10 +80,13 @@ public class Main {
             g.AlgoritmoElipse(250,250,40,85, Color.black);
             g.AlgoritmoElipse(250,250,30,65, Color.black);
             g.AlgoritmoElipse(250,250,15,45, Color.black);
-            g.AlgoritmoElipse(250,250,5,25, Color.black);
+            g.AlgoritmoElipse(250,250,5,25, Color.black);*/
+       //     g.clear();
+
+            g.AlgoritmoTiposDeLinea(150,50,150,300 ,5,Color.black);
+         //   g.AlgoritmoBresenhamLine(100,300,100,50,Color.black);  50,50,250,200
 
         }catch (Exception e){
-
         }
     }
     public static void main(String[] args){
