@@ -317,7 +317,7 @@ public class Pixel  extends JFrame {
     }
 
     //Practica 13
-    public void AlgoritmoTiposDeLinea (int x0, int y0, int x1, int y1,int sizeMask, Color c) {
+    public void AlgoritmoTiposDeLinea (int x0, int y0, int x1, int y1,int paints,int unpaints, Color c) {
         boolean estado = true;
         float dx = Math.abs(x1 - x0);
         float dy = Math.abs(y1 - y0);
@@ -327,25 +327,27 @@ public class Pixel  extends JFrame {
         float erro2;
         int  paintS = 0;
         int con = 0;
-        int  unpaint = sizeMask;
+        int  unpaint2 = paints;
 
         while (x0 != x1 || y0 != y1) {
                 //los pixel que si se pintan
             System.out.println("paintS = " + paintS);
 
-         if(paintS  <  unpaint && estado ) {
+         if(paintS  <  unpaint2 && estado ) {
              putPixel(x0, y0, c);
              paintS++;
          }else {
              estado =false;
-             paintS--;
+            // paintS--;
              con++;
-             if(con >= unpaint) {
+             if(con >= unpaints ) {
+                 System.out.println("con = " + con);
                 estado = true;
                 con =0;
+                paintS = 0;
              }
          }
-            System.out.println("estado = " + estado);
+           //System.out.println("estado = " + estado);
                System.out.println("x0 = " + x0 + " y0 " + y0);
                erro2 = 2 * errO;
 

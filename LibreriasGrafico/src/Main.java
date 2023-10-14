@@ -83,7 +83,7 @@ public class Main {
             g.AlgoritmoElipse(250,250,5,25, Color.black);*/
        //     g.clear();
 
-            g.AlgoritmoTiposDeLinea(150,50,150,300 ,5,Color.black);
+            g.AlgoritmoTiposDeLinea(150,50,150,300 ,4,1,Color.black);
          //   g.AlgoritmoBresenhamLine(100,300,100,50,Color.black);  50,50,250,200
 
         }catch (Exception e){
