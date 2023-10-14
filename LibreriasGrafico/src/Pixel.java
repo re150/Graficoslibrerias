@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
+
+import static java.lang.Thread.getAllStackTraces;
 import static java.lang.Thread.sleep;
 
 public class Pixel  extends JFrame {
@@ -366,7 +369,107 @@ public class Pixel  extends JFrame {
         }
 
     }
+
+    public void AlgoritmoTiposDeLinea2 (int x0, int y0, int x1, int y1,String Mask, Color c) {
+        boolean estado = true;
+        float dx = Math.abs(x1 - x0);
+        float dy = Math.abs(y1 - y0);
+        float sx = (x0 < x1) ? 1 : -1;
+        float sy = (y0 < y1) ? 1 : -1;
+        float errO = dx - dy;
+        float erro2;
+        int  paint1 = 0;
+        int con = 0;
+        int unpaint1 ;
+        int unpaint0 ;
+        boolean firse1 = false;
+        boolean firse0 = false;
+        ArrayList<Character> unos = new ArrayList<>();
+       ArrayList <Character> ceros = new ArrayList<>() ;
+
+        for (char caracter : Mask.toCharArray()) {
+            if (caracter == '1') {
+                unos.add(caracter);
+                if(firse0 == false){
+                    firse1 =!firse0;
+                   // System.out.println("firse1 = " + firse1);
+                }
+            } else if (caracter == '0') {
+                ceros.add(caracter);
+                if(firse1 == false){
+                    firse0 =!firse1;
+                    //System.out.println("firse0 = " + firse0);
+                }
+            }
+        }
+         unpaint1 = unos.size();
+         unpaint0 = ceros.size();
+        while (x0 != x1 || y0 != y1) {
+            //los pixel que si se pintan
+            //System.out.println(estado);
+            if(firse0) estado = false;
+
+            if(paint1  <  unpaint1 && estado == true ) {
+                putPixel(x0, y0, c);
+                System.out.println("paint1 = " + paint1);
+                paint1++;
+
+            }else {
+                estado =false;
+                // paintS--;
+                System.out.println("con before = " + con);
+                con++;
+                if(con > unpaint0 ) {
+                    System.out.println("con = " + con);
+                    estado = true;
+                    firse0 = false;
+                    con =0;
+                    paint1 = 0;
+                }
+            }
+            //System.out.println("estado = " + estado);
+           // System.out.println("x0 = " + x0 + " y0 " + y0);
+            erro2 = 2 * errO;
+
+            if (erro2 > -dy) {
+                errO -= dy;
+                x0 += sx;
+                //    System.out.println("sx = " + sx);
+            }
+
+            if (erro2 < dx) {
+                errO += dx;
+                y0 += sy;
+                //  System.out.println("sy = " + sy);
+            }
+
+        }
+
+    }
     //Practica 14
+    public void AnalisarMascara (String Mask){
+        boolean firse1 = false;
+        boolean firse0 = false;
+        String unos = "";
+        String ceros = "";
+
+        for (char caracter : Mask.toCharArray()) {
+            if (caracter == '1') {
+                unos += caracter;
+                if(firse0 == false){
+                    firse1 =!firse0;
+                }
+            } else if (caracter == '0') {
+                ceros += caracter;
+                if(firse1 == false){
+                    firse0 =!firse1;
+                }
+            }
+        }
+
+      //  System.out.println("String con unos: " + unos + " " + firse1);
+        //System.out.println("String con ceros: " + ceros);
+        }
 
     //Pracica 15
 

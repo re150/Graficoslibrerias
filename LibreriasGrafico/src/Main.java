@@ -19,6 +19,7 @@ public class Main {
         g.drawCircleSymmetry8(250,250,200,Color.black);
         g.drawCircleSymmetry8(250,250,100,Color.black);*/
 
+
         try {
 
            //Practica 1
@@ -83,8 +84,12 @@ public class Main {
             g.AlgoritmoElipse(250,250,5,25, Color.black);*/
        //     g.clear();
 
-            g.AlgoritmoTiposDeLinea(150,50,150,300 ,4,1,Color.black);
+         //   g.AlgoritmoTiposDeLinea(150,50,150,300 ,4,1,Color.red);
+            //g.AlgoritmoTiposDeLinea2(50,100,50,300 ,"00011",Color.black);
+            g.AlgoritmoTiposDeLinea2(100,100,100,300 ,"00000001111",Color.red);
+            g.AlgoritmoTiposDeLinea2(110,100,110,300 ,"111111100",Color.black);
          //   g.AlgoritmoBresenhamLine(100,300,100,50,Color.black);  50,50,250,200
+            g.AnalisarMascara("000111");
 
         }catch (Exception e){
         }
